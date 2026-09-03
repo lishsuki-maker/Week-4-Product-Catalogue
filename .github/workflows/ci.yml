@@ -29,6 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: make build
+      - name: Install Trivy
+        uses: aquasecurity/setup-trivy@v0.2.5
       - name: Generate an SBOM
         run: trivy image --format spdx-json --output sbom.json product-catalogue:2.0.0
       - name: Upload SBOM
