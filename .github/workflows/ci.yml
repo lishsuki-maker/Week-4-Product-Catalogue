@@ -17,11 +17,17 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-  trivy-scan:
-    name: Config + Fs
+  trivy-scan1:
+    name: Config + Fs_CRITICAL, HIGH
     uses: lishsuki-maker/Week-4-shared-repo/.github/workflows/security-scan.yml@main
     with:
       severity: "CRITICAL,HIGH"
+
+  trivy-scan2:
+    name: Config + Fs_CRITICAL only
+    uses: lishsuki-maker/Week-4-shared-repo/.github/workflows/security-scan.yml@main
+    with:
+      severity: "CRITICAL"
 
   sbom:
     name: Generate SBOM
